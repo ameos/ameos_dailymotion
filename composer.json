@@ -3,7 +3,7 @@
     "description": "Add dailymotion as media asset provider for TYPO3.",
     "type": "typo3-cms-extension",
     "homepage": "https://github.com/ameos/ameos_ameos_dailymotion",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "require": {
         "typo3/cms": ">=7.6.0,<8.6.99"
     },

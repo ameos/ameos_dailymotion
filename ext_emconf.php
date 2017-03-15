@@ -17,11 +17,11 @@ $EM_CONF[$_EXTKEY] = [
     'modify_tables'    => '',
     'clearCacheOnLoad' => 0,
     'lockType'         => '',
-    'version'          => '1.0.0',
+    'version'          => '1.0.1',
     'autoload'         => ['psr-4' => ['Ameos\\AmeosDailymotion\\' => 'Classes']],
     'constraints'      => [
         'depends' => [
-            'typo3' => '7.6.0-7.6.99',
+            'typo3' => '7.6.0-8.6.99',
             'php'   => '5.5.0-7.1.99'
         ],
         'conflicts' => [],
