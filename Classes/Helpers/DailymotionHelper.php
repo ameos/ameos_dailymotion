@@ -89,8 +89,8 @@ class DailymotionHelper extends \TYPO3\CMS\Core\Resource\OnlineMedia\Helpers\Abs
      */
     protected function getOEmbedUrl($mediaId, $format = 'json')
     {
-        return sprintf('http://www.dailymotion.com/services/oembed?url=%s&format=%s',
-            urlencode(sprintf('http://dai.ly/%s', $mediaId)),
+        return sprintf('https://www.dailymotion.com/services/oembed?url=%s&format=%s',
+            urlencode(sprintf('https://dai.ly/%s', $mediaId)),
             rawurlencode($format)
         );
     }
