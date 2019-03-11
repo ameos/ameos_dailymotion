@@ -17,7 +17,7 @@ $EM_CONF[$_EXTKEY] = [
     'modify_tables'    => '',
     'clearCacheOnLoad' => 0,
     'lockType'         => '',
-    'version'          => '1.0.5',
+    'version'          => '1.0.6',
     'autoload'         => ['psr-4' => ['Ameos\\AmeosDailymotion\\' => 'Classes']],
     'constraints'      => [
         'depends' => [
