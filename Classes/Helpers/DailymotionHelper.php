@@ -1,4 +1,5 @@
 <?php
+
 namespace Ameos\AmeosDailymotion\Helpers;
 
 use TYPO3\CMS\Core\Resource\File;
@@ -70,7 +71,7 @@ class DailymotionHelper extends \TYPO3\CMS\Core\Resource\OnlineMedia\Helpers\Abs
         // - https://dai.ly/<code>
         // - http://www.dailymotion.com/video/<code>_<title>
         // - https://www.dailymotion.com/video/<code>_<title>
-        if (preg_match('#(dai\.ly/|www\.dailymotion\.com/video/)([a-zA-Z0-9]*)#i', $url, $match)) {        
+        if (preg_match('#(dai\.ly/|www\.dailymotion\.com/video/)([a-zA-Z0-9]*)#i', $url, $match)) {
             $videoId = $match[2];
         }
 
@@ -89,10 +90,10 @@ class DailymotionHelper extends \TYPO3\CMS\Core\Resource\OnlineMedia\Helpers\Abs
      */
     protected function getOEmbedUrl($mediaId, $format = 'json')
     {
-        return sprintf('https://www.dailymotion.com/services/oembed?url=%s&format=%s',
+        return sprintf(
+            'https://www.dailymotion.com/services/oembed?url=%s&format=%s',
             urlencode(sprintf('https://dai.ly/%s', $mediaId)),
             rawurlencode($format)
         );
     }
 }
-

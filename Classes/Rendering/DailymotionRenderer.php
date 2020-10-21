@@ -1,4 +1,5 @@
 <?php
+
 namespace Ameos\AmeosDailymotion\Rendering;
 
 use TYPO3\CMS\Core\Resource\File;
@@ -35,7 +36,7 @@ class DailymotionRenderer implements \TYPO3\CMS\Core\Resource\Rendering\FileRend
      * @return int
      */
     public function getPriority()
-    {        
+    {
         return 1;
     }
 
@@ -47,7 +48,11 @@ class DailymotionRenderer implements \TYPO3\CMS\Core\Resource\Rendering\FileRend
      */
     public function canRender(FileInterface $file)
     {
-        return ($file->getMimeType() === 'video/dailymotion' || $file->getExtension() === 'dailymotion') && $this->getOnlineMediaHelper($file) !== false;
+        return (
+                $file->getMimeType() === 'video/dailymotion'
+                || $file->getExtension() === 'dailymotion'
+            )
+            && $this->getOnlineMediaHelper($file) !== false;
     }
     
     /**
@@ -64,7 +69,8 @@ class DailymotionRenderer implements \TYPO3\CMS\Core\Resource\Rendering\FileRend
                 $orgFile = $orgFile->getOriginalFile();
             }
             if ($orgFile instanceof File) {
-                $this->onlineMediaHelper = OnlineMediaHelperRegistry::getInstance()->getOnlineMediaHelper($orgFile);
+                $this->onlineMediaHelper = OnlineMediaHelperRegistry::getInstance()
+                    ->getOnlineMediaHelper($orgFile);
             } else {
                 $this->onlineMediaHelper = false;
             }
@@ -82,8 +88,13 @@ class DailymotionRenderer implements \TYPO3\CMS\Core\Resource\Rendering\FileRend
      * @param bool $usedPathsRelativeToCurrentScript See $file->getPublicUrl()
      * @return string
      */
-    public function render(FileInterface $file, $width, $height, array $options = [], $usedPathsRelativeToCurrentScript = false)
-    {
+    public function render(
+        FileInterface $file,
+        $width,
+        $height,
+        array $options = [],
+        $usedPathsRelativeToCurrentScript = false
+    ) {
         if (!isset($options['autoplay']) && $file instanceof FileReference) {
             $autoplay = $file->getProperty('autoplay');
             if ($autoplay !== null) {
@@ -115,7 +126,20 @@ class DailymotionRenderer implements \TYPO3\CMS\Core\Resource\Rendering\FileRend
         if (is_object($GLOBALS['TSFE']) && $GLOBALS['TSFE']->config['config']['doctype'] !== 'html5') {
             $attributes[] = 'frameborder="0"';
         }
-        foreach (['class', 'dir', 'id', 'lang', 'style', 'title', 'accesskey', 'tabindex', 'onclick', 'poster', 'preload'] as $key) {
+        $attributes = [
+            'class',
+            'dir',
+            'id',
+            'lang',
+            'style',
+            'title',
+            'accesskey',
+            'tabindex',
+            'onclick',
+            'poster',
+            'preload'
+        ];
+        foreach ($attributes as $key) {
             if (!empty($options[$key])) {
                 $attributes[] = $key . '="' . htmlspecialchars($options[$key]) . '"';
             }
@@ -127,5 +151,4 @@ class DailymotionRenderer implements \TYPO3\CMS\Core\Resource\Rendering\FileRend
             empty($attributes) ? '' : ' ' . implode(' ', $attributes)
         );
     }
-    
 }
