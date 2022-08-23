@@ -8,14 +8,13 @@ $EM_CONF[$_EXTKEY] = [
     'author_email'     => 'typo3dev@ameos.com',
     'author_company'   => 'Ameos',
     'state'            => 'stable',
-    'version'          => '1.0.8',
+    'version'          => '1.0.9',
     'constraints'      => [
         'depends' => [
             'typo3' => '8.7.0-11.5.99',
-            'php'   => '7.0.0-7.3.99'
+            'php'   => '7.0.0-7.4.99'
         ],
         'conflicts' => [],
         'suggests'  => [],
     ],
-    
 ];
