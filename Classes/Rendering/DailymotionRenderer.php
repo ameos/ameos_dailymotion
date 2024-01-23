@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ameos\AmeosDailymotion\Rendering;
 
 use TYPO3\CMS\Core\Resource\File;
@@ -7,23 +9,16 @@ use TYPO3\CMS\Core\Resource\FileInterface;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Resource\OnlineMedia\Helpers\OnlineMediaHelperInterface;
 use TYPO3\CMS\Core\Resource\OnlineMedia\Helpers\OnlineMediaHelperRegistry;
+use TYPO3\CMS\Core\Resource\Rendering\FileRendererInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-/*
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-
-class DailymotionRenderer implements \TYPO3\CMS\Core\Resource\Rendering\FileRendererInterface
+class DailymotionRenderer implements FileRendererInterface
 {
+    /**
+     * @var bool
+     */
+    private $onlineMediaHelper;
+
     /**
      * Returns the priority of the renderer
      * This way it is possible to define/overrule a renderer
@@ -69,7 +64,7 @@ class DailymotionRenderer implements \TYPO3\CMS\Core\Resource\Rendering\FileRend
                 $orgFile = $orgFile->getOriginalFile();
             }
             if ($orgFile instanceof File) {
-                $this->onlineMediaHelper = OnlineMediaHelperRegistry::getInstance()
+                $this->onlineMediaHelper = GeneralUtility::makeInstance(OnlineMediaHelperRegistry::class)
                     ->getOnlineMediaHelper($orgFile);
             } else {
                 $this->onlineMediaHelper = false;
