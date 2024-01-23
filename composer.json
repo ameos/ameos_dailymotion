@@ -4,10 +4,8 @@
     "type": "typo3-cms-extension",
     "homepage": "https://github.com/ameos/ameos_dailymotion",
     "require": {
-        "typo3/cms-core": "^8.7 | ^9.5 | ^10.4 | ^11.5 | dev-master",
-        "typo3/cms-fluid": "^8.7 | ^9.5 | ^10.4 | ^11.5 | dev-master",
-        "typo3/cms-extbase": "^8.7 | ^9.5 | ^10.4 | ^11.5 | dev-master",
-        "php": ">=7.0.0"
+        "typo3/cms-core": "^12.4",
+        "php": ">=8.0.0"
     },
     "keywords": [
         "TYPO3",
@@ -32,6 +30,5 @@
         "typo3/cms": {
             "extension-key": "ameos_dailymotion"
         }
-    },
-    "non-feature-branches": ["development", "staging"]
+    }
 }
